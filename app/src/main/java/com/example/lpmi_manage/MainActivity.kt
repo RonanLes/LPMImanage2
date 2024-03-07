@@ -10,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.lpmi_manage.component.Home
+import com.example.lpmi_manage.component.Login
 import com.example.lpmi_manage.ui.theme.LPMI_manageTheme
-import com.example.lpmi_manage.component.LoginScreen
-import com.example.lpmi_manage.component.RegistrationScreen
+import com.example.lpmi_manage.component.Registration
+import com.example.lpmi_manage.utils.NavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    NavHost(navController, startDestination = "login") {
-                        composable("login") { LoginScreen(navController).Login() }
-                        composable("registration") { RegistrationScreen(navController).Registration() }
-                    }
+                    NavGraph()
 
                 }
             }
