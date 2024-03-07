@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -47,7 +46,7 @@ import androidx.navigation.NavController
             Toast.makeText(context, "All fields must be filled", Toast.LENGTH_SHORT).show()
         }  else {
             // Navigate to the home page and pass the input data
-            navController.navigate("home") {
+            navController.navigate("offerlist/username=${nom.value}") {
                 launchSingleTop = true
                 restoreState = true
                 // Pass the input data to the home page

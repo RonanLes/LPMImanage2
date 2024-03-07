@@ -10,12 +10,17 @@ import com.example.lpmi_manage.component.OfferList
 import com.example.lpmi_manage.component.Registration
 
 @Composable
-fun NavGraph(){
+fun NavGraph() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = "home") {
         composable("home") { Home(navController) }
         composable("login") { Login(navController) }
         composable("registration") { Registration(navController) }
-        composable("offerlist") { OfferList(navController) }
+        composable("offerlist/{username}") { backStackEntry ->
+            val username = backStackEntry.arguments?.getString("username")
+            if (username != null) {
+                OfferList(username, navController)
+            }
+        }
     }
-}
+    }
