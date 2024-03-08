@@ -1,15 +1,13 @@
 package com.example.lpmi_manage.component
 
 import android.os.Bundle
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
 
 
 // Modèle de données pour une offre d'emploi
@@ -60,8 +58,13 @@ fun JobOfferList(jobOffers: List<JobOfferModel>) {
 @Composable
 fun JobOfferCard(jobOffer: JobOfferModel) {
     // You can customize the appearance of each job offer card here
-    Text(
-        text = "${jobOffer.title} - ${jobOffer.location}",
-        modifier = Modifier.padding(8.dp)
-    )
+    Card(modifier = Modifier
+        .padding(8.dp)
+        .size(300.dp, 100.dp)) {
+        Box(modifier = Modifier
+            .padding(20.dp)
+            .size(300.dp, 100.dp)) {
+            Text(text = "${jobOffer.title} - ${jobOffer.location} -${jobOffer.description}")
+        }
+    }
 }
