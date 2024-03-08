@@ -13,12 +13,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 
     @Composable
     fun Login( navController: NavController){
         val nom = remember { mutableStateOf("") }
-        val mail = remember { mutableStateOf("") }
+        val email = remember { mutableStateOf("") }
         val password = remember { mutableStateOf("") }
         val context = LocalContext.current
 
@@ -28,31 +29,31 @@ import androidx.navigation.NavController
                 onValueChange = { nom.value = it },
                 label = { Text("Username") }
             )
-            OutlinedTextField(
-                value = mail.value,
-                onValueChange = { mail.value = it },
-                label = { Text("email") }
-            )
+            ValidateEmail()
 
             OutlinedTextField(
+                visualTransformation = PasswordVisualTransformation(),
                 value = password.value,
                 onValueChange = { password.value = it },
                 label = { Text("Password") }
             )
 
     DefaultAuthButton(
-        onFirstButtonClicked = { if (nom.value.isEmpty() || mail.value.isEmpty() || password.value.isEmpty()) {
+        onFirstButtonClicked = { if (nom.value.isEmpty() || password.value.isEmpty()) {
             // Show a toast message if any field is empty
             Toast.makeText(context, "All fields must be filled", Toast.LENGTH_SHORT).show()
+        }else if (isValidEmail(email.value)) {
+            // Show a toast message if the email is not valid
+            Toast.makeText(context, "Email is not valid", Toast.LENGTH_SHORT).show()
         }  else {
             // Navigate to the home page and pass the input data
-            navController.navigate("offerlist/username=${nom.value}") {
+            navController.navigate("offerlist/${nom.value}") {
                 launchSingleTop = true
                 restoreState = true
                 // Pass the input data to the home page
                 var arguments = bundleOf(
                     "username" to nom.value,
-                    "email" to mail.value,
+                    "email" to email.value,
                     "password" to password.value
                 )
             }
