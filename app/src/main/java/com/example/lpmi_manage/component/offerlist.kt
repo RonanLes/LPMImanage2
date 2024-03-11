@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 
 
@@ -42,29 +43,35 @@ fun OfferList(nameUser: String, navController: NavController) {
         Text(
             text = "Bienvenue $username",
         )
-        JobOfferList(jobOffers = jobOffers)
+        JobOfferList(jobOffers = jobOffers, navController = navController)
     }
 }
 
 @Composable
-fun JobOfferList(jobOffers: List<JobOfferModel>) {
+fun JobOfferList(jobOffers: List<JobOfferModel>, navController: NavController) {
     LazyColumn {
         items(jobOffers.size) { index ->
-            JobOfferCard(jobOffer = jobOffers[index])
+            JobOfferCard(jobOffer = jobOffers[index], navController = navController)
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JobOfferCard(jobOffer: JobOfferModel) {
+fun JobOfferCard(jobOffer: JobOfferModel, navController: NavController?) {
     // You can customize the appearance of each job offer card here
     Card(modifier = Modifier
         .padding(8.dp)
-        .size(300.dp, 100.dp)) {
-        Box(modifier = Modifier
-            .padding(20.dp)
-            .size(300.dp, 100.dp)) {
-            Text(text = "${jobOffer.title} - ${jobOffer.location} -${jobOffer.description}")
+        .size(300.dp, 100.dp),
+    )
+    {
+        Box(
+            modifier = Modifier
+                .padding(20.dp)
+                .size(300.dp, 100.dp),
+
+            ) {
+            Text(text = "${jobOffer.title} - ${jobOffer.location}")
         }
     }
 }
