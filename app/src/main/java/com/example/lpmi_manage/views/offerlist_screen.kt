@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.lpmi_manage.component.JobOfferCardView
 import com.example.lpmi_manage.models.JobOfferModel
 import com.example.lpmi_manage.models.jobOffers
 
