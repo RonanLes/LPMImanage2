@@ -1,4 +1,4 @@
-package com.example.lpmi_manage.component
+package com.example.lpmi_manage.view
 
 import android.widget.*
 import androidx.compose.foundation.layout.Column
@@ -14,9 +14,12 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import com.example.lpmi_manage.component.DefaultAuthButton
+import com.example.lpmi_manage.component.ValidateEmail
+import com.example.lpmi_manage.component.isValidEmail
 
 
-    @Composable
+@Composable
     fun Login( navController: NavController){
         val nom = remember { mutableStateOf("") }
         val email = remember { mutableStateOf("") }

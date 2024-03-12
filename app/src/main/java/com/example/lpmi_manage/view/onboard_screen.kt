@@ -1,4 +1,4 @@
-package com.example.lpmi_manage.component
+package com.example.lpmi_manage.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

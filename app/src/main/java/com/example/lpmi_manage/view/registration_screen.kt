@@ -1,4 +1,4 @@
-package com.example.lpmi_manage.component
+package com.example.lpmi_manage.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -10,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.lpmi_manage.component.DefaultAuthButton
 
 @Composable
     fun Registration(navController: NavController) {

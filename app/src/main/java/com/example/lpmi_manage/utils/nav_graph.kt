@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.lpmi_manage.component.Home
-import com.example.lpmi_manage.component.Login
-import com.example.lpmi_manage.component.OfferList
-import com.example.lpmi_manage.component.Registration
+import com.example.lpmi_manage.view.Home
+import com.example.lpmi_manage.view.Login
+import com.example.lpmi_manage.view.OfferList
+import com.example.lpmi_manage.view.Registration
 
 @Composable
 fun NavGraph() {
