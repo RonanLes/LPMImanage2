@@ -1,4 +1,4 @@
-package com.example.lpmi_manage.view
+package com.example.lpmi_manage.views
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -28,14 +28,7 @@ fun JobOfferCardView(jobOffer: JobOfferModel, navController: NavController?) {
 
             ) {
             Text(text = "${jobOffer.title} - ${jobOffer.location}")
+        }
 
-        }
-        Box(
-            modifier = Modifier
-                .padding(20.dp)
-                .size(300.dp, 100.dp),
-        ) {
-            Text(text = "${jobOffer.title} - ${jobOffer.location}")
-        }
     }
 }

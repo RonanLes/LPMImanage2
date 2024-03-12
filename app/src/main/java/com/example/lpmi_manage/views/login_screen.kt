@@ -1,4 +1,4 @@
-package com.example.lpmi_manage.view
+package com.example.lpmi_manage.views
 
 import android.widget.*
 import androidx.compose.foundation.layout.Column
