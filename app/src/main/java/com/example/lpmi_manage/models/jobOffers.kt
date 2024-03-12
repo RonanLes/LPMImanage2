@@ -1,6 +1,5 @@
 package com.example.lpmi_manage.models
 
-import androidx.lifecycle.ViewModel
 
 data class JobOfferModel(
     val title: String,
