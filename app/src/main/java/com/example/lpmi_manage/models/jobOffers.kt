@@ -1,6 +1,9 @@
 package com.example.lpmi_manage.models
 
+import androidx.room.Entity
 
+
+@Entity(tableName = "job_offer")
 data class JobOfferModel(
     val title: String,
     val location: String,
