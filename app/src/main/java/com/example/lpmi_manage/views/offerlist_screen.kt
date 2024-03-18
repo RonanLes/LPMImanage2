@@ -1,5 +1,7 @@
 package com.example.lpmi_manage.views
 
+import JobOfferCardView
+import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,10 +15,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.lpmi_manage.component.JobOfferCardView
+import androidx.room.Insert
+import com.example.
+import com.example.lpmi_manage.models.JobOfferDAO
 import com.example.lpmi_manage.models.JobOfferModel
 import com.example.lpmi_manage.models.jobOffers
-
 
 @Composable
 fun OfferList(nameUser: String, navController: NavController) {
@@ -34,6 +37,8 @@ fun OfferList(nameUser: String, navController: NavController) {
 fun JobOfferList(jobOffers: List<JobOfferModel>, navController: NavController) {
     var searchQuery by remember { mutableStateOf("" ) }
 
+
+
     Column {
         TextField(
             value = searchQuery,
@@ -45,13 +50,17 @@ fun JobOfferList(jobOffers: List<JobOfferModel>, navController: NavController) {
         val filteredJobOffers =
             jobOffers.filter { it.title.contains(searchQuery, ignoreCase = true) }
 
+
         LazyColumn {
             items(filteredJobOffers) { jobOffer ->
-                JobOfferCardView(jobOffer = jobOffer, navController = navController)
+                JobOfferCardView(jobOffer = jobOffer, navController = navController, context = navController.context)
             }
         }
     }
+
 }
 
-
+suspend fun insertJobOffer(jobOfferDAO: JobOfferDAO, jobOfferModel: JobOfferModel) {
+    jobOfferDAO.insert(jobOfferModel)
+}
 
